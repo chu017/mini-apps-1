@@ -6,7 +6,14 @@
 </head>
 <body>
   <h1>CSV Report Generator</h1>
-  <button>submit</button>
+  <form method="POST" action="/upload_json">
+    <label for="text">JOSN text</label>
+    <br>
+    <textarea name="text" rows="20" cols="30"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+    <input type="button" value="Download">
+  </form>
 
   <script src="app.js"></script>
 </body>
