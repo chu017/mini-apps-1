@@ -13,68 +13,61 @@ var isPlayOne = true;
 
 var play = function(event, callback) {
 
-  playRules.isFull();
+  var isFull = playRules.isFull();
 
-  if (isPlayOne) {
-    event.srcElement.innerHTML = 'x';
-    isPlayOne = false;
-  } else {
-    event.srcElement.innerHTML = 'o';
-    isPlayOne = true;
+  if (!isFull) {
+    // render
+    if (isPlayOne) {
+      event.target.innerHTML = 'x';
+      isPlayOne = false;
+    } else {
+      event.target.innerHTML = 'o';
+      isPlayOne = true;
+    }
+
+    setTimeout(callback, 10);
   }
 
-  callback();
+  return;
 
 }
 
 
 // Add a event listener for each square on the board.
+// turn 5
+// checkAllRules function
 
-document.getElementById("square1").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
+const checkAllRules = () => {
   playRules.diagonalCheck();
   playRules.horizontalCheck();
-  playRules.diagonalCheck();
-})
+  playRules.verticalCheck();
+};
+
+document.getElementById("square1").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square2").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square2").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square3").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square3").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square4").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square4").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square5").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square5").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square6").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square6").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square7").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square7").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square8").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square8").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
-document.getElementById("square9").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, () => {
-  playRules.diagonalCheck();
-})
+document.getElementById("square9").addEventListener("click", (event) => playRules.isEmpty(event, (event) => play(event, checkAllRules)
 ));
 
 

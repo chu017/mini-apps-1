@@ -1,0 +1,20 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "Multistep-Checkout-Experience",
+  "main": "app.js",
+  "scripts": {
+    "compile": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-react": "^7.13.13",
+    "express": "^4.17.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
+}
