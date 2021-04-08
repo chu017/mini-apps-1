@@ -40,13 +40,34 @@ https://www.robinwieruch.de/conditional-rendering-react
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isCheckout: false }
-    this.handleCheckoutClick = this.handleCheckoutClick.bind(this);
+    this.state = {
+      counter: 0,
+      checkout: []
+    }
+
+
+    this.goNext = this.goNext.bind(this);
+    this.getRecord = this.getRecord.bind(this);
     this.createRecord = this.createRecord.bind(this);
   }
 
-  handleCheckoutClick() {
-    this.setState({ isCheckout: true });
+  goNext() {
+    if (this.state.counter === 4) {
+      this.setState({ counter: 0 });
+    } else {
+      this.setState({ counter: this.state.counter + 1 });
+    }
+
+  }
+
+  getRecord() {
+    $.ajax({
+      url: "/localhost:3000/checkout",
+      type: 'GET',
+      data: record,
+      success: (e) => console.log(e),
+      error: (e) => console.log(e)
+    })
   }
 
   createRecord(record) {
@@ -59,47 +80,35 @@ class App extends React.Component {
     })
   }
 
-
-
-
   render() {
-    const isCheckout = this.state.isCheckout;
-    let button;
-    if (!isCheckout) {
-      button = <CheckoutButton onClick={this.handleCheckoutClick} />;
-    } else {
-
-    }
 
     return (
       <div>
-        <FormHeader />
-        {button}
-        <FormOne />
-        <FormTwo />
-        <FormThree />
-        <Confirmation />
+        { this.state.counter === 0 && <FormHeader goNext={this.goNext}
+        createRecord={this.createRecord}/> }
+        { this.state.counter === 1 && <FormOne goNext={this.goNext}
+        createRecord={this.createRecord}/> }
+        { this.state.counter === 2 && <FormTwo goNext={this.goNext}
+        createRecord={this.createRecord}/> }
+        { this.state.counter === 3 && <FormThree goNext={this.goNext}
+        createRecord={this.createRecord}/> }
+        { this.state.counter === 4 && <Confirmation goNext={this.goNext}
+        createRecord={this.createRecord}/> }
       </div>
     );
 
   }
 }
 
-const CheckoutButton = function(props) {
 
-  return (
-    <button onClick={props.onClick}>
-      Checkout
-    </button>
-  );
-}
-
-
-const FormHeader = function() {
+const FormHeader = function(props) {
 
     return (
       <div>
-        <h2>Multistep Checkout</h2>
+        <h2>Checkout</h2>
+        <button onClick={props.goNext}>
+        Checkout
+        </button>
       </div>
     );
 }
@@ -128,7 +137,9 @@ class FormOne extends React.Component {
         <input type="submit" value="Add" />
         <br></br>
 
-        <button>Next</button>
+        <button onClick={this.props.goNext}>
+          Next
+        </button>
 
       </form>
       </div>
@@ -170,7 +181,10 @@ class FormTwo extends React.Component {
         <input type="submit" value="Add" />
         <br></br>
 
-        <button>Next</button>
+        <button onClick={this.props.goNext}>
+          Next
+        </button>
+
       </form>
       </div>
     );
@@ -204,7 +218,10 @@ class FormThree extends React.Component {
           <input type="submit" value="Add" />
           <br></br>
 
-          <button>Next</button>
+        <button onClick={this.props.goNext}>
+          Next
+        </button>
+
         </form>
 
       </div>
@@ -226,7 +243,10 @@ class Confirmation extends React.Component {
       <div>
 
         <h3>To conform</h3>
-        <button>Purchase</button>
+        <h5>Your information</h5>
+        <button onClick={this.props.goNext}>
+          Purchase
+        </button>
 
       </div>
     );
