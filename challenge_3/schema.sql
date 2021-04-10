@@ -6,20 +6,20 @@ USE checkout;
 
 CREATE TABLE personal_information (
   id int NOT NULL AUTO_INCREMENT,
-  fullname varchar(20) NOT NULL,
+  full_name varchar(20) NOT NULL,
   email varchar(30) NOT NULL,
   password varchar(20) NOT NULL,
   PRIMARY KEY (ID)
 );
 
-insert into personal_information(fullname, email, password) values ('john johnson', 'johnjohnson@gmail.com', '123456');
+insert into personal_information(full_name, email, password) values ('john johnson', 'johnjohnson@gmail.com', '123456');
 
 /* Create other tables and define schemas for them here! */
 
-CREATE TABLE shiping_address (
+CREATE TABLE shipping_address (
   id int NOT NULL AUTO_INCREMENT,
-  addressline1 varchar(20) NOT NULL,
-  addressline2 varchar(20) NOT NULL,
+  addressline1 varchar(30) NOT NULL,
+  addressline2 varchar(30) NOT NULL,
   city varchar(20) NOT NULL,
   state varchar(20) NOT NULL,
   zipcode varchar(20) NOT NULL,
@@ -27,14 +27,18 @@ CREATE TABLE shiping_address (
   PRIMARY KEY (ID)
 );
 
-CREATE TABLE billing (
+insert into shipping_address(addressline1, addressline2, city, state, zipcode, phone_number) values ('111 jashon ave.', 'apt 111', 'san francisco', 'ca', '94111', '123456');
+
+CREATE TABLE billing_information (
   id int NOT NULL AUTO_INCREMENT,
-  credit_card_number varchar(20) NOT NULL,
+  credit_card_num varchar(20) NOT NULL,
   expiry_date varchar(20) NOT NULL,
   cvv varchar(20) NOT NULL,
-  billing_zip_code varchar(20) NOT NULL,
+  billing_zipcode varchar(20) NOT NULL,
   PRIMARY KEY (ID)
 );
+
+insert into billing_information(credit_card_num, expiry_date, cvv, billing_zipcode) values ('12345', '10_22', '111', '94111');
 
 /*
 EXECUTE.sql file: mysql -u root -p < schema.sql

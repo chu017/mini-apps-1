@@ -1,0 +1,25 @@
+
+let newboardmodel = [];
+
+for (let x = 0; x < 7; x++) {
+  let newColumn = [];
+
+  for (let y = 0; y < 6; y++) {
+
+    newColumn.push(0);
+
+  }
+  newboardmodel.push(newColumn);
+
+}
+
+
+[
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0]
+]
