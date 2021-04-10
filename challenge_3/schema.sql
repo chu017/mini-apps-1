@@ -40,6 +40,7 @@ CREATE TABLE billing_information (
 
 insert into billing_information(credit_card_num, expiry_date, cvv, billing_zipcode) values ('12345', '10_22', '111', '94111');
 
+
 /*
 EXECUTE.sql file: mysql -u root -p < schema.sql
 ACCESS MySQL CLI: mysql -u root -p

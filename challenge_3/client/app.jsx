@@ -60,6 +60,7 @@ class App extends React.Component {
     })
   }
 
+
   getRecord() {
     $.ajax({
       url: "http://localhost:3000/checkout",

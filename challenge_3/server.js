@@ -27,6 +27,7 @@ app.get('/checkout', function (req, res) {
       })
   }
 
+
   getAll(function (err, data) {
     if (err) {
       console.log('test-controller-err')
